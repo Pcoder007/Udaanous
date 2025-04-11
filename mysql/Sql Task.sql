@@ -81,3 +81,23 @@ desc students;
 alter table students 
 rename column Student_Name to Students_Name;
 select * from students;
+desc students;
+create index std_Subjects on students(subject);
+show index from students;
+select * from students where subject="biology";
+explain select * from students where subject="biology";
+create unique index std_subjects on students(subject);
+drop index std_subjects on students;
+create unique index std_Subjects on students(subject);
+show index from students;
+use my_database;
+select * from courses_data;
+select * from enrollments_data;
+select ed.enrollment_ID, ed.student_Id, ed.Semester  from courses_data as cd
+left join enrollments_data as ed
+on cd.Course_ID=ed.Course_ID
+where enrollment_ID is null;
+select ed.enrollment_ID, ed.student_Id, ed.Semester  from courses_data as cd
+left join enrollments_data as ed
+on cd.Course_ID=ed.Course_ID
+where enrollment_ID is not null;
